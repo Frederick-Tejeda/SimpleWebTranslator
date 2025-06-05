@@ -1,11 +1,23 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Translator from '../components/Translator';
+import '../styles/global.css';
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="SimpleWebTranslator">
+  <main>
+    <Translator client:load />
+  </main>
 </Layout>
+
+<style>
+  main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ensure it takes full viewport height */
+    padding: 20px;
+    box-sizing: border-box; /* Include padding in element's total width and height */
+    background: linear-gradient(135deg, #f0f4f8, #d9e2ec); /* Light, subtle gradient */
+  }
+</style>

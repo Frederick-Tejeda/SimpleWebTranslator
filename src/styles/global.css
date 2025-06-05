@@ -1,0 +1,234 @@
+/* Basic Resets & Global Styles */
+:root {
+  --primary-color: #007bff; /* Blue */
+  --secondary-color: #6c757d; /* Gray */
+  --accent-color: #28a745; /* Green */
+  --background-light: #f8f9fa;
+  --background-dark: #e9ecef;
+  --text-dark: #343a40;
+  --text-light: #ffffff;
+  --border-color: #ced4da;
+  --shadow-light: rgba(0, 0, 0, 0.1);
+  --font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  line-height: 1.6;
+  color: var(--text-dark);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1 {
+  font-size: 2.5em;
+  color: var(--primary-color);
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+/* Translator Container */
+.translator-container {
+  background-color: var(--background-light);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px var(--shadow-light);
+  padding: 40px;
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Language Selection Row */
+.language-select-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.language-select-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.language-select-group label {
+  font-weight: 600;
+  color: var(--secondary-color);
+  font-size: 0.9em;
+  text-transform: uppercase;
+}
+
+select {
+  padding: 10px 15px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background-color: white;
+  font-size: 1em;
+  color: var(--text-dark);
+  cursor: pointer;
+  appearance: none; /* Remove default arrow */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="%23343a40" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 20px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+select:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+  outline: none;
+}
+
+.swap-button {
+  background: var(--primary-color);
+  color: var(--text-light);
+  border: none;
+  border-radius: 50%; /* Make it circular */
+  width: 45px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.swap-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  transform: rotate(180deg); /* Rotate on hover for fun effect */
+}
+
+.swap-button:active {
+  transform: scale(0.95);
+}
+
+/* Text Areas */
+.text-area-group {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+textarea {
+  flex: 1; /* Each textarea takes equal space */
+  min-width: 300px; /* Minimum width for each textarea */
+  height: 250px;
+  padding: 15px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-family: var(--font-family);
+  font-size: 1.1em;
+  line-height: 1.5;
+  resize: vertical; /* Allow vertical resizing */
+  box-sizing: border-box; /* Include padding in element's total width and height */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+textarea:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.2);
+  outline: none;
+}
+
+.input-textarea {
+  background-color: var(--background-dark);
+}
+
+.output-textarea {
+  background-color: var(--background-light);
+  color: var(--primary-color); /* Emphasize translated text */
+  font-weight: 500;
+}
+
+.output-textarea::placeholder {
+  color: rgba(0, 123, 255, 0.6);
+}
+
+/* Note for Demo */
+.note {
+  text-align: center;
+  font-size: 0.9em;
+  color: var(--secondary-color);
+  margin-top: 15px;
+  font-style: italic;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .language-select-row, .text-area-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .swap-button {
+    margin: 10px auto; /* Center the swap button when columns stack */
+  }
+
+  textarea {
+    min-width: unset; /* Remove min-width on smaller screens */
+    width: 100%;
+  }
+
+  .translator-container {
+    padding: 25px;
+    gap: 15px;
+  }
+
+  h1 {
+    font-size: 2em;
+  }
+}
+
+@media (max-width: 480px) {
+  .translator-container {
+    padding: 15px;
+  }
+  h1 {
+    font-size: 1.8em;
+  }
+}
+
+.loading-indicator {
+  text-align: center;
+  font-size: 1em;
+  color: var(--primary-color);
+  margin-top: -15px; /* Adjust as needed to position it well */
+  font-weight: 500;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.7; }
+  50% { opacity: 1; }
+  100% { opacity: 0.7; }
+}
+
+/* For the textarea when loading */
+textarea.output-textarea {
+  font-style: italic; /* When translating, make it italic */
+}
